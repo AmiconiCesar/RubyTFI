@@ -1,4 +1,5 @@
 <%= locality.name + " " + locality.province %>
 <%= link_to 'Editar', edit_locality_path(locality) %>
-<%= link_to 'Delete', locality, :confirm => "Está seguro ?", :method => :delete %>
+<%= link_to 'Delete', locality_path(locality),
+                      data: { turbo_method: :delete, turbo_confirm: "Confirma Borrado?" } %>
 <br>

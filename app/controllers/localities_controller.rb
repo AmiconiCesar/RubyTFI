@@ -1,5 +1,6 @@
 class LocalitiesController < ApplicationController
-    
+    before_action :set_locality, only: [:edit, :update, :destroy, :show]
+
     def new
         @locality = Locality.new
     end
@@ -15,19 +16,16 @@ class LocalitiesController < ApplicationController
         redirect_to @locality
     end
 
-    def edit
-        @locality = Locality.find params[:id]
+    def edit    
     end
 
     def update
-        @locality = Locality.find params[:id]
         @locality.update locality_params
 
         redirect_to @locality
     end
 
     def destroy
-        @locality = Locality.find params[:id]
         @locality.destroy
 
         redirect_to localities_path
@@ -35,13 +33,16 @@ class LocalitiesController < ApplicationController
 
 
     def show
-        @locality = Locality.find params[:id]
     end
 
     private
 
         def locality_params
             params.require(:locality).permit(:name, :province)
+        end
+
+        def set_locality
+            @locality = Locality.find params[:id]
         end
 
 end
