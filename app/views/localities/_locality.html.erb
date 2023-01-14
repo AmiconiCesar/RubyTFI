@@ -1,5 +1,11 @@
-<%= locality.name + " " + locality.province %>
-<%= link_to 'Editar', edit_locality_path(locality) %>
-<%= link_to 'Delete', locality_path(locality),
-                      data: { turbo_method: :delete, turbo_confirm: "Confirma Borrado?" } %>
-<br>
+ <div class="container">
+   <tr>
+    <td> <%= locality.id %></td>
+    <td> <%= locality.name %></td>
+    <td> <%= locality.province %></td>
+    <td> <%= link_to 'Editar', edit_locality_path(locality), :class => "btn btn-primary btn-sm" %> </td>
+    <td> <%= link_to 'Eliminar', locality_path(locality), :class => "btn btn-danger btn-sm",  
+                        data: { turbo_method: :delete, turbo_confirm: "Confirma Borrado?" } %> </td>
+    <br>
+   </tr> 
+</div>
