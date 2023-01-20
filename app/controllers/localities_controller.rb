@@ -11,10 +11,12 @@ class LocalitiesController < ApplicationController
        
     def create
         @locality = Locality.new locality_params
-        @locality.save
-
-        redirect_to @locality
-    end
+        if @locality.save
+            redirect_to @locality
+        else
+            render :new, status: :unprocessable_entity
+        end
+    end    
 
     def edit    
     end

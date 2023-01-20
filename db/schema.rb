@@ -12,10 +12,11 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_09_035148) do
   create_table "localities", force: :cascade do |t|
-    t.string "name"
-    t.string "province"
+    t.string "name", null: false
+    t.string "province", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name", "province"], name: "index_localities_on_name_and_province", unique: true
   end
 
 end
