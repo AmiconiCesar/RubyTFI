@@ -3,7 +3,7 @@ class CreateLocalities < ActiveRecord::Migration[7.0]
     create_table :localities do |t|
       t.string :name
       t.string :province
-
+      
       t.timestamps
     end
   end
