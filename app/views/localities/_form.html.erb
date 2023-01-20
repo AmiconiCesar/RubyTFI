@@ -1,7 +1,7 @@
  <%= form_with model: @locality do |f| %>
      <% if @locality.errors.any? %>
         <div class="alert alert-danger" role="alert">
-          <strong>Atención Error:</strong>
+          <strong>Atención hay errores:</strong>
           <ul>
             <% @locality.errors.full_messages.each do |message| %>
               <li><%= message %></li>
