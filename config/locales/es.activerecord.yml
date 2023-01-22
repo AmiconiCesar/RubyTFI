@@ -1,0 +1,8 @@
+es:
+  activerecord:
+    models:
+      locality: 'Localidad'
+    attributes:
+      locality: 
+        name: 'Nombre'
+        province: 'Provincia'
