@@ -1,12 +1,13 @@
-<div id="<%= dom_id locality %>">
-  <p>
-    <strong>Name:</strong>
-    <%= locality.name %>
-  </p>
-
-  <p>
-    <strong>Province:</strong>
-    <%= locality.province %>
-  </p>
-
+<div class="container">
+   <tr>
+    <td> <%= locality.id %></td>
+    <td> <%= locality.name %></td>
+    <td> <%= locality.province %></td>
+    <td> <%= link_to 'Editar', edit_locality_path(locality), :class => "btn btn-primary btn-sm" %> </td>
+    <td> <%= button_to "Eliminar", locality_path(locality), 
+             {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
+              :method => :delete }%> </td>
+    <br>
+   </tr> 
 </div>
+
