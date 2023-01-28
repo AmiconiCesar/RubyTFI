@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_224614) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_28_144058) do
   create_table "localities", force: :cascade do |t|
     t.string "name", null: false
     t.string "province", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "province"], name: "index_localities_on_name_and_province", unique: true
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "weekday"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

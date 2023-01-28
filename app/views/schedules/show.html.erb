@@ -1,0 +1,8 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <strong> Día de la semana: </strong> <%= @schedule.weekday %><br>
+  <strong> Horario desde las: </strong> <%= @schedule.start_time.strftime("%H:%M") %>
+  <strong> hasta las: </strong> <%= @schedule.end_time.strftime("%H:%M") %>
+  <br>
+  <%= link_to "Volver a los Horarios", schedules_path %>
+</div>
