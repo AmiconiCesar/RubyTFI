@@ -1,7 +1,6 @@
 class LocalitiesController < ApplicationController
   before_action :set_locality, only: %i[ show edit update destroy ]
-  before_action :set_province, only: %i[ new edit ]
-
+  
   # GET /localities or /localities.json
   def index
     @localities = Locality.all
@@ -25,7 +24,7 @@ class LocalitiesController < ApplicationController
     @locality = Locality.new(locality_params)
     
     if @locality.save
-        redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente"
+        redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente ✅"
     else
         render :new, status: :unprocessable_entity
     end
@@ -36,7 +35,7 @@ class LocalitiesController < ApplicationController
   def update
     respond_to do |format|
       if @locality.update(locality_params)
-        format.html { redirect_to locality_url(@locality), notice: "Localidad actualizada exitosamente" }
+        format.html { redirect_to locality_url(@locality), notice: "Localidad actualizada exitosamente ✅" }
         format.json { render :show, status: :ok, location: @locality }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,7 +49,7 @@ class LocalitiesController < ApplicationController
     @locality.destroy
 
     respond_to do |format|
-      format.html { redirect_to localities_url, notice: "Localidad eliminada exitosamente" }
+      format.html { redirect_to localities_url, notice: "Localidad eliminada exitosamente ✅" }
       format.json { head :no_content }
     end
   end
@@ -60,13 +59,6 @@ class LocalitiesController < ApplicationController
     def set_locality
       @locality = Locality.find(params[:id])
     end
-
-    def set_province
-      @provinces = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", 
-        "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", 
-        "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe",
-         "Santiago del Estero", "Tierra del Fuego", "Tucumán"]      
-      end     
 
     # Only allow a list of trusted parameters through.
     def locality_params

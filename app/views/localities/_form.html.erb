@@ -1,7 +1,7 @@
 <%= form_with model: @locality do |form| %>
   <% if @locality.errors.any? %>
     <div class="alert alert-danger" role="alert">
-      <strong>Atención hay errores:</strong>
+      <strong>🚫Atención hay errores:</strong>
       <ul>
         <% @locality.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,14 +12,19 @@
 
   <div class="container">
     <div class="form-group">  
+     <div>      
       <%= form.label :name %><br>
-      <%= form.text_field :name, class:'form-control'  %><br>
+      <%= form.text_field :name, class:'form-control'  %>
       <%= form.label :province %><br>
-      <%= form.select :province, options_for_select(
-        @provinces, :selected => form.object.province) %>
-
-      <br>
-      <%= form.submit "Guardar Localidad", :class => "btn btn-outline-success"  %>
-    </div>   
+      <%= form.select :province, options_for_select([
+        "Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", 
+        "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", 
+        "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe",
+         "Santiago del Estero", "Tierra del Fuego", "Tucumán"
+         ], :selected => form.object.province) %><br>
+      </div>   
+      <div>
+       <%= form.submit "Guardar Localidad", :class => "btn btn-outline-success"  %>
+      </div>   
   </div>    
 <% end %>
