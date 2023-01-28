@@ -1,5 +1,6 @@
 class LocalitiesController < ApplicationController
   before_action :set_locality, only: %i[ show edit update destroy ]
+  before_action :set_province, only: %i[ new edit ]
 
   # GET /localities or /localities.json
   def index
@@ -22,16 +23,13 @@ class LocalitiesController < ApplicationController
   # POST /localities or /localities.json
   def create
     @locality = Locality.new(locality_params)
-
-    respond_to do |format|
-      if @locality.save
-        format.html { redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente" }
-        format.json { render :show, status: :created, location: @locality }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @locality.errors, status: :unprocessable_entity }
-      end
+    
+    if @locality.save
+        redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente"
+    else
+        render :new, status: :unprocessable_entity
     end
+    
   end
 
   # PATCH/PUT /localities/1 or /localities/1.json
@@ -62,6 +60,13 @@ class LocalitiesController < ApplicationController
     def set_locality
       @locality = Locality.find(params[:id])
     end
+
+    def set_province
+      @provinces = ["Buenos Aires", "Catamarca", "Chaco", "Chubut", "Córdoba", "Corrientes", 
+        "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", 
+        "Neuquén", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe",
+         "Santiago del Estero", "Tierra del Fuego", "Tucumán"]      
+      end     
 
     # Only allow a list of trusted parameters through.
     def locality_params

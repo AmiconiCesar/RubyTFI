@@ -15,7 +15,9 @@
       <%= form.label :name %><br>
       <%= form.text_field :name, class:'form-control'  %><br>
       <%= form.label :province %><br>
-      <%= form.text_field :province, class:'form-control' %>
+      <%= form.select :province, options_for_select(
+        @provinces, :selected => form.object.province) %>
+
       <br>
       <%= form.submit "Guardar Localidad", :class => "btn btn-outline-success"  %>
     </div>   
