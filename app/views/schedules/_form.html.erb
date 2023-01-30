@@ -15,9 +15,7 @@
     <div class="form-group">  
        <div>
         <%= form.label :weekday, style: "display: block"%>
-        <%= form.select :weekday, options_for_select([
-          "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"
-        ], :selected => form.object.weekday) %>
+        <%= form.select :weekday, options_for_select( Schedule.weekdays.keys,  disabled: :Domingo) %>
        
        <div>
         <%= form.label :start_time, style: "display: block" %>
