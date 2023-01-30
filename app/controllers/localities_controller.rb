@@ -25,23 +25,22 @@ class LocalitiesController < ApplicationController
 
     respond_to do |format|
       if @locality.save
-        format.html { redirect_to locality_url(@locality), notice: "Locality was successfully created." }
+        format.html { redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente ✅" }
         format.json { render :show, status: :created, location: @locality }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @locality.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /localities/1 or /localities/1.json
   def update
     respond_to do |format|
       if @locality.update(locality_params)
-
-        format.html { redirect_to locality_url(@locality), notice: "Localidad actualizada exitosamente" }
-
-         format.json { render :show, status: :ok, location: @locality }
+        format.html { redirect_to locality_url(@locality), notice: "Localidad actualizada exitosamente ✅" }
+        format.json { render :show, status: :ok, location: @locality }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @locality.errors, status: :unprocessable_entity }
@@ -54,8 +53,8 @@ class LocalitiesController < ApplicationController
     @locality.destroy
 
     respond_to do |format|
-    format.html { redirect_to localities_url, notice: "Localidad eliminada exitosamente" }
-    format.json { head :no_content }
+      format.html { redirect_to localities_url, notice: "Localidad eliminada exitosamente ✅" }
+      format.json { head :no_content }
     end
   end
 
