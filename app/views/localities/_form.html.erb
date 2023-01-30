@@ -1,14 +1,16 @@
+
 <%= form_with model: @locality do |form| %>
   <% if @locality.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <strong>Atención hay errores:</strong>
       <ul>
         <% @locality.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
 
   <div class="container">
     <div class="form-group">  
@@ -22,4 +24,5 @@
       <%= form.submit "Guardar Localidad", :class => "btn btn-outline-success"  %>
     </div>   
   </div>    
+
 <% end %>
