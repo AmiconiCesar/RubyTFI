@@ -6,3 +6,11 @@ es:
       locality: 
         name: 'Nombre'
         province: 'Provincia'
+    models:
+      schedule: 'Horario de atención'
+    attributes:
+      schedule: 
+        weekday: 'Día de la semana'
+        start_time: 'Horario desde'
+        end_time: 'Horario hasta'    
+

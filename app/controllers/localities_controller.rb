@@ -1,6 +1,6 @@
 class LocalitiesController < ApplicationController
   before_action :set_locality, only: %i[ show edit update destroy ]
-  
+
   # GET /localities or /localities.json
   def index
     @localities = Locality.all
@@ -22,13 +22,17 @@ class LocalitiesController < ApplicationController
   # POST /localities or /localities.json
   def create
     @locality = Locality.new(locality_params)
-    
-    if @locality.save
-        redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente ✅"
-    else
-        render :new, status: :unprocessable_entity
+
+    respond_to do |format|
+      if @locality.save
+        format.html { redirect_to locality_url(@locality), notice: "Localidad agregada exitosamente ✅" }
+        format.json { render :show, status: :created, location: @locality }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @locality.errors, status: :unprocessable_entity }
+      end
     end
-    
+
   end
 
   # PATCH/PUT /localities/1 or /localities/1.json
