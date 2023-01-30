@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><strong> Lista de Horarios de Atención</strong></h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+            <tr>
+                <th>Dia de la semana</th>
+                <th>Horario desde</th>
+                <th>Horario hasta</th>
+            </tr>
+      </thead> 
+      <tbody>
+        <%= render @schedules %>
+      </tbody> 
+    </table>   
+  </div>
+  <%= link_to 'Agregar Horario', new_schedule_path, :class => "btn btn-success btn-lg" %>
+</div>   

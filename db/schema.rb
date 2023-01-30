@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_224614) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_000420) do
+
   create_table "localities", force: :cascade do |t|
     t.string "name", null: false
     t.string "province", null: false
@@ -18,5 +19,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_224614) do
     t.datetime "updated_at", null: false
     t.index ["name", "province"], name: "index_localities_on_name_and_province", unique: true
   end
+
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "weekday", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["weekday"], name: "index_schedules_on_weekday", unique: true
+  end
+
 
 end
