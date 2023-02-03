@@ -6,6 +6,7 @@ es:
       locality: 
         name: 'Nombre'
         province: 'Provincia'
+  activerecord:
     models:
       schedule: 'Horario de atención'
     attributes:
