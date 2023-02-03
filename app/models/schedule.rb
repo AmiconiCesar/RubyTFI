@@ -1,6 +1,5 @@
 class Schedule < ApplicationRecord
     validates :weekday, :start_time, :end_time,  presence: { message: "No puede ser nulo"}
-    validates :weekday, uniqueness: { message: "Ya está registrado"}
     validates :start_time, comparison: { less_than: :end_time , 
         message: "debe ser anterior al Horario hasta" }
     
