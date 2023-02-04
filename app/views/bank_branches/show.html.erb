@@ -1,6 +1,7 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
-  <strong> Nombre: </strong> <%= @bank_branch.name %><br>
+  <br>
+  <h4><strong> Sucursal Bancaria Nombre: <%= @bank_branch.name.capitalize %></strong></h4>
   <strong> Dirección: </strong> <%= @bank_branch.address %><br>
   <strong> Localidad: </strong> <%= @bank_branch.locality.name %>
   <strong> Provincia: </strong> <%= @bank_branch.locality.province %><br>

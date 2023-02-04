@@ -9,6 +9,10 @@
     <td> <%= button_to "Eliminar", bank_branch_path(bank_branch), 
              {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
               :method => :delete }%> </td>
+    <td> <%= link_to bank_branch_path(bank_branch), class: "btn btn-icon" do %>
+           <i class="fa fa-eye" aria-hidden="true"></i>
+         <% end %> </td>
+          
     <br>
    </tr> 
 </div>
