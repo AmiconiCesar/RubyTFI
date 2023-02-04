@@ -3,7 +3,7 @@ class BankBranchesController < ApplicationController
 
   # GET /bank_branches or /bank_branches.json
   def index
-    @bank_branches = BankBranch.all
+    @bank_branches = BankBranch.order(:name)
   end
 
   # GET /bank_branches/1 or /bank_branches/1.json
@@ -17,15 +17,16 @@ class BankBranchesController < ApplicationController
 
   # GET /bank_branches/1/edit
   def edit
+  
   end
 
   # POST /bank_branches or /bank_branches.json
   def create
     @bank_branch = BankBranch.new(bank_branch_params)
-
+    
     respond_to do |format|
       if @bank_branch.save
-        format.html { redirect_to bank_branch_url(@bank_branch), notice: "Bank branch was successfully created." }
+        format.html { redirect_to bank_branch_url(@bank_branch), notice: "Sucursal Bancaria agregada exitosamente ✅" }
         format.json { render :show, status: :created, location: @bank_branch }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class BankBranchesController < ApplicationController
   def update
     respond_to do |format|
       if @bank_branch.update(bank_branch_params)
-        format.html { redirect_to bank_branch_url(@bank_branch), notice: "Bank branch was successfully updated." }
+        format.html { redirect_to bank_branch_url(@bank_branch), notice: "Sucursal Bancaria modificada exitosamente ✅" }
         format.json { render :show, status: :ok, location: @bank_branch }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,10 +53,11 @@ class BankBranchesController < ApplicationController
     @bank_branch.destroy
 
     respond_to do |format|
-      format.html { redirect_to bank_branches_url, notice: "Bank branch was successfully destroyed." }
+      format.html { redirect_to bank_branches_url, notice: "Sucursal Bancaria eliminada exitosamente ✅" }
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -65,6 +67,6 @@ class BankBranchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bank_branch_params
-      params.require(:bank_branch).permit(:name, :address, :phone)
+      params.require(:bank_branch).permit(:name, :address, :phone, :locality_id)
     end
 end

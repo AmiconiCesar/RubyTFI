@@ -1,17 +1,14 @@
-<div id="<%= dom_id bank_branch %>">
-  <p>
-    <strong>Name:</strong>
-    <%= bank_branch.name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= bank_branch.address %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= bank_branch.phone %>
-  </p>
-
+<div class="container">
+   <tr>
+    <td> <%= bank_branch.id %></td>
+    <td> <%= bank_branch.name %></td>
+    <td> <%= bank_branch.address %></td>
+    <td> <%= bank_branch.locality.name %></td>
+    <td> <%= bank_branch.locality.province %></td>
+    <td> <%= link_to 'Editar', edit_bank_branch_path(bank_branch), :class => "btn btn-primary btn-sm" %> </td>
+    <td> <%= button_to "Eliminar", bank_branch_path(bank_branch), 
+             {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
+              :method => :delete }%> </td>
+    <br>
+   </tr> 
 </div>

@@ -1,14 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Bank branches</h1>
-
-<div id="bank_branches">
-  <% @bank_branches.each do |bank_branch| %>
-    <%= render bank_branch %>
-    <p>
-      <%= link_to "Show this bank branch", bank_branch %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New bank branch", new_bank_branch_path %>
+<div class="container">
+  <h1><strong> Lista de Sucursales Bancarias</strong></h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Localidad</th>
+                <th>Provincia</th>
+            </tr>
+      </thead> 
+      <tbody>
+        <%= render @bank_branches %>
+      </tbody> 
+    </table>   
+  </div>
+  <%= link_to 'Agregar Sucursal Bancaria', new_bank_branch_path, :class => "btn btn-success btn-lg" %>
