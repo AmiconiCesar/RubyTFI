@@ -1,0 +1,34 @@
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <br>
+  <h4><strong> Sucursal Bancaria Nombre: <%= @bank_branch.name.capitalize %></strong></h4>
+  <strong> Dirección: </strong> <%= @bank_branch.address %><br>
+  <strong> Localidad: </strong> <%= @bank_branch.locality.name %>
+  <strong> Provincia: </strong> <%= @bank_branch.locality.province %><br>
+  <strong> Teléfono: </strong> <%= @bank_branch.phone %>
+  <br>
+  <h5><strong> Horarios de Atención </strong></h5>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+            <tr>
+                <th>Día de la semana</th>
+                <th>Horario desde</th>
+                <th>Horario hasta</th>
+            </tr>
+      </thead> 
+      <tbody>
+         <% @schedules.each do |row| %>
+            <tr>
+               <td><%= row.weekday %></td>
+               <td><%= row.start_time.strftime("%H:%M") %></td>
+               <td><%= row.end_time.strftime("%H:%M") %></td>
+            </tr>
+         <% end %>   
+      </tbody> 
+    </table>   
+  </div> 
+  
+  <br>
+  <%= link_to "Volver a las Sucursales Bancarias", bank_branches_path %>
+</div>

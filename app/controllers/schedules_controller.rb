@@ -1,9 +1,10 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[ show edit update destroy ]
+  before_action :set_bank_branch
 
   # GET /schedules or /schedules.json
   def index
-    @schedules = Schedule.all.order(:weekday)
+    @schedules = @bank_branch.schedules.order(:weekday)
   end
 
   # GET /schedules/1 or /schedules/1.json
@@ -21,11 +22,11 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
+    @schedule = @bank_branch.schedules.new(schedule_params)
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to schedule_url(@schedule), notice: "Horario de atención agregado exitosamente ✅" }
+        format.html { redirect_to bank_branch_schedule_url(@bank_branch, @schedule), notice: "Horario de atención agregado exitosamente ✅" }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class SchedulesController < ApplicationController
   def update
     respond_to do |format|
       if @schedule.update(schedule_params)
-        format.html { redirect_to schedule_url(@schedule), notice: "Horario de atención actualizado exitosamente ✅" }
+        format.html { redirect_to bank_branch_schedule_url(@bank_branch, @schedule), notice: "Horario de atención actualizado exitosamente ✅" }
         format.json { render :show, status: :ok, location: @schedule }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class SchedulesController < ApplicationController
     @schedule.destroy
 
     respond_to do |format|
-      format.html { redirect_to schedules_url, notice: "Horario de atención eliminado exitosamente ✅" }
+      format.html { redirect_to bank_branch_schedules_url, notice: "Horario de atención eliminado exitosamente ✅" }
       format.json { head :no_content }
     end
   end
@@ -61,6 +62,10 @@ class SchedulesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
       @schedule = Schedule.find(params[:id])
+    end
+
+    def set_bank_branch
+      @bank_branch = BankBranch.find(params[:bank_branch_id])
     end
 
     # Only allow a list of trusted parameters through.

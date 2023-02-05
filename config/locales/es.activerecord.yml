@@ -6,6 +6,7 @@ es:
       locality: 
         name: 'Nombre'
         province: 'Provincia'
+  activerecord:
     models:
       schedule: 'Horario de atención'
     attributes:
@@ -13,4 +14,13 @@ es:
         weekday: 'Día de la semana'
         start_time: 'Horario desde'
         end_time: 'Horario hasta'    
+  activerecord:
+    models:
+      bank_branch: 'Sucursal Bancaria'
+    attributes:
+      bank_branch: 
+        name: 'Nombre'
+        address: 'Dirección'
+        locality: 'Localidad'
+        phone: 'Teléfono'      
 

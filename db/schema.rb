@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_30_000420) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_225150) do
+  create_table "bank_branches", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "phone", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "locality_id", null: false
+    t.index ["locality_id"], name: "index_bank_branches_on_locality_id"
+    t.index ["name"], name: "index_bank_branches_on_name", unique: true
+  end
+
   create_table "localities", force: :cascade do |t|
     t.string "name", null: false
     t.string "province", null: false
@@ -25,6 +36,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_30_000420) do
     t.time "end_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bank_branch_id", null: false
+    t.index ["bank_branch_id"], name: "index_schedules_on_bank_branch_id"
+    t.index ["weekday", "bank_branch_id"], name: "index_schedules_on_weekday_and_bank_branch_id", unique: true
   end
 
+  add_foreign_key "bank_branches", "localities"
+  add_foreign_key "schedules", "bank_branches"
 end

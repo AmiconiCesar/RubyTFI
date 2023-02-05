@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :schedules
+  resources :bank_branches do
+      resources :schedules
+  end    
   resources :localities
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
