@@ -1,5 +1,9 @@
 <div class="container">
-    <h1><strong> Editar Horario de Atención </strong></h1>
-    <%= render 'form' %><br>
-    <%= link_to "Volver a los horarios", schedules_path %>
-</div>
+  <h2><strong> Modificar Horario de Atención</strong></h2>
+  <h2><strong> Sucursal Nombre: <%= @bank_branch.name.capitalize %> </strong></h2>
+  <%= render "form", bank_branch: @bank_branch %>
+  <br>
+  <div>
+    <%= link_to "Volver a la Sucursal Bancaria", bank_branch_schedules_path %>
+  </div>
+ </div>

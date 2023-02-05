@@ -3,8 +3,8 @@
     <td> <%= schedule.weekday %></td>
     <td> <%= schedule.start_time.strftime("%H:%M")%></td>
     <td> <%= schedule.end_time.strftime("%H:%M")%></td>
-    <td> <%= link_to 'Editar', edit_schedule_path(schedule), :class => "btn btn-primary btn-sm" %> </td>
-    <td> <%= button_to "Eliminar", schedule_path(schedule), 
+    <td> <%= link_to 'Editar', edit_bank_branch_schedule_path(@bank_branch, schedule), :class => "btn btn-primary btn-sm" %> </td>
+    <td> <%= button_to "Eliminar", bank_branch_schedule_path(@bank_branch, schedule), 
              {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
               :method => :delete }%> </td>
     <br>

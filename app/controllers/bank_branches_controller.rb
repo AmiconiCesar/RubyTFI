@@ -8,6 +8,7 @@ class BankBranchesController < ApplicationController
 
   # GET /bank_branches/1 or /bank_branches/1.json
   def show
+    @schedules = @bank_branch.schedules.order(:weekday)
   end
 
   # GET /bank_branches/new
