@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_03_225150) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_164159) do
   create_table "bank_branches", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
@@ -39,6 +39,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_225150) do
     t.integer "bank_branch_id", null: false
     t.index ["bank_branch_id"], name: "index_schedules_on_bank_branch_id"
     t.index ["weekday", "bank_branch_id"], name: "index_schedules_on_weekday_and_bank_branch_id", unique: true
+  end
+
+  create_table "turns", force: :cascade do |t|
+    t.date "date"
+    t.time "time"
+    t.string "reason"
+    t.integer "state"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "bank_branches", "localities"
