@@ -1,0 +1,10 @@
+<div class="container">
+  <h2><strong> Turno en Sucursal Nombre: <%= @turn.bank_branch.to_string %> </strong></h2> 
+  <p style="color: green"><%= notice %></p>
+  <strong> Fecha: </strong> <%= I18n.l(@turn.date, format: "%A, %d-%m-%y") %><br>
+  <strong> Horario: </strong> <%= @turn.time.strftime("%H:%M") %><br>
+  <strong> Motivo: </strong> <%= @turn.reason %>
+  <br>
+  <br>
+  <%= link_to "Volver a mis turnos", turns_path %>
+</div>
