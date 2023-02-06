@@ -1,0 +1,42 @@
+
+ <div class="container">
+  <h1><strong> Crear Usuario </strong></h1>
+
+      <%= form_with model: @user do |form| %>
+         <% if @user.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+               <strong>🚫Atención hay errores:</strong>
+                <ul>
+                 <% @user.errors.each do |error| %>
+                   <li><%= error.full_message %></li>
+                 <% end %>
+                </ul>
+            </div>
+         <% end %>
+
+      <div class="container">
+        <div class="form-group">  
+            <div>
+                <%= form.label :username, style: "display: block" %>
+                <%= form.text_field :username %>
+            </div>
+
+            <div>
+                <%= form.label :password, style: "display: block" %>
+                <%= form.password_field :password%>
+            </div>
+
+            <div>
+            <br> 
+                <%= form.submit "Registrar", :class => "btn btn-outline-success"  %>
+            </div>
+        </div>
+      </div>         
+  
+      <% end %>
+</div>
+  <br>
+<div>
+   <%= link_to "Volver al Home" %>
+</div>
+

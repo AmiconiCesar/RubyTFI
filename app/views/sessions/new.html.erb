@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+<div class="container">
+<h1><strong> Inicio de Sesión </strong></h1>
+
+    <%= form_with(url: sessions_path) do |form| %>
+       
+    <div class="container">
+      <div class="form-group">  
+          <div>
+              <%= form.label :username, style: "display: block" %>
+              <%= form.text_field :username %>
+          </div>
+
+          <div>
+              <%= form.label :password, style: "display: block" %>
+              <%= form.password_field :password%>
+          </div>
+
+          <div>
+          <br> 
+              <%= form.submit "Login", :class => "btn btn-outline-success"  %>
+          </div>
+      </div>
+    </div>         
+
+    <% end %>
+</div>
+<br>
+<div>
+ <%= link_to "Si no esta registrado", new_user_path %>
+</div>
+

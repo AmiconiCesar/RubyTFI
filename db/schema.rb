@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_05_180343) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_06_162059) do
   create_table "bank_branches", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
@@ -53,7 +53,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_180343) do
     t.index ["bank_branch_id"], name: "index_turns_on_bank_branch_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.integer "role", default: 0, null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
   add_foreign_key "bank_branches", "localities"
   add_foreign_key "schedules", "bank_branches"
+  add_foreign_key "schedules", "bank_branches"
+  add_foreign_key "turns", "bank_branches"
   add_foreign_key "turns", "bank_branches"
 end

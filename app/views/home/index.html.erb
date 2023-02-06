@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+<nav>
+  <ul>
+    <% if Current.user %>
+      <h1>Bienvenido, <%= Current.user.username %></h1>
+      <li><%= link_to "Perfil", user_path(Current.user) %></li>
+      <li><%= link_to 'Cerrar Sesión', new_session_path(Current.user.id),
+                  method: :delete, data: { confirm: 'Confirma el cierre de sesión?'} %></li>
+    <% else %>
+      <li><%= link_to "Iniciar sesión", new_session_path %></li> 
+    <% end %>
+  <ul>  
+</nav>
+ 
