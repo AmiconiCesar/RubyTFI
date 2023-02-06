@@ -6,7 +6,7 @@
     <td> <%= link_to 'Editar', edit_locality_path(locality), :class => "btn btn-primary btn-sm" %> </td>
     <td> <%= button_to "Eliminar", locality_path(locality), 
              {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
-              :method => :delete }%> </td>
+              :method => :delete, :disabled => (locality.bank_branches.any?) }%> </td>
     <br>
    </tr> 
 </div>

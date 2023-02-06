@@ -26,7 +26,7 @@
 
        <div>
         <%= form.label :locality, style: "display: block"%>
-        <%= form.collection_select :locality_id, Locality.order(province: :asc , name: :asc), 
+        <%= form.collection_select :locality_id, ordered_localities, 
               :id, :to_string %>
        </div>
 
