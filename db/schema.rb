@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_05_164159) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_180343) do
   create_table "bank_branches", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
@@ -42,15 +42,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_164159) do
   end
 
   create_table "turns", force: :cascade do |t|
-    t.date "date"
-    t.time "time"
-    t.string "reason"
-    t.integer "state"
+    t.date "date", null: false
+    t.time "time", null: false
+    t.string "reason", null: false
+    t.integer "state", null: false
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bank_branch_id", null: false
+    t.index ["bank_branch_id"], name: "index_turns_on_bank_branch_id"
   end
 
   add_foreign_key "bank_branches", "localities"
   add_foreign_key "schedules", "bank_branches"
+  add_foreign_key "turns", "bank_branches"
 end

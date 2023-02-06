@@ -23,4 +23,14 @@ es:
         address: 'Dirección'
         locality: 'Localidad'
         phone: 'Teléfono'      
+  activerecord:
+    models:
+      turn: 'Turno'
+    attributes:
+      turn: 
+        date: 'Fecha'
+        time: 'Hora'
+        reason: 'Motivo'
+        state: 'Estado'   
+        comment: 'Comentario'
 

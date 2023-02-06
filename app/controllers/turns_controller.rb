@@ -65,6 +65,6 @@ class TurnsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def turn_params
-      params.require(:turn).permit(:date, :time, :reason, :state, :comment)
+      params.require(:turn).permit(:date, :time, :reason, :state, :comment, :bank_branch_id)
     end
 end

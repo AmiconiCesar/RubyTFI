@@ -4,4 +4,9 @@ class BankBranch < ApplicationRecord
     belongs_to :locality
     has_many :schedules
     has_many :turns 
+
+    def to_string
+        "#{name.capitalize} - #{locality.to_string}"
+    end
+
 end

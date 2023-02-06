@@ -1,14 +1,20 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Turns</h1>
-
-<div id="turns">
-  <% @turns.each do |turn| %>
-    <%= render turn %>
-    <p>
-      <%= link_to "Show this turn", turn %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New turn", new_turn_path %>
+<div class="container">
+  <h2><strong> Turnos de Atención</strong></h2>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+            <tr>
+                <th>Sucursal</th>
+                <th>Fecha</th>
+                <th>Horario</th>
+                <th>Motivo</th>
+                <th>Estado</th>
+            </tr>
+      </thead> 
+      <tbody>
+        <%= render @turns %>
+      </tbody> 
+    </table>   
+  </div>
+  <%= link_to 'Nuevo Turno', new_turn_path, :class => "btn btn-success btn-lg" %>
+</div>   
