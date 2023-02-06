@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :turns
   resources :bank_branches do
       resources :schedules
   end    
