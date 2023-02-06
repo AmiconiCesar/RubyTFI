@@ -16,7 +16,7 @@
        
        <div>
         <%= form.label "Sucursal Bancaria", style: "display: block"%>
-        <%= form.collection_select :bank_branch_id, BankBranch.order(name: :asc), 
+        <%= form.collection_select :bank_branch_id, bank_branches_available, 
               :id, :to_string %>
        </div>
 
