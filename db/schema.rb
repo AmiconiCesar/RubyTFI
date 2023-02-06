@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_02_03_225150) do
-=======
 ActiveRecord::Schema[7.0].define(version: 2023_02_05_180343) do
->>>>>>> aec988bca639e4b94c1ec1ef4759f8656a7435fb
   create_table "bank_branches", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
