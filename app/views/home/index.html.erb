@@ -1,15 +1,53 @@
 <p style="color: green"><%= notice %></p>
 <p style="color: red"><%= alert %></p>
-<nav>
-  <ul>
-    <% if Current.user %>
-      <h1>Bienvenido, <%= Current.user.username %></h1>
-      <li><%= link_to "Perfil", user_path(Current.user) %></li>
-      <li><%= link_to 'Cerrar Sesión', new_session_path(Current.user.id),
-                  method: :delete, data: { confirm: 'Confirma el cierre de sesión?'} %></li>
-    <% else %>
-      <li><%= link_to "Iniciar sesión", new_session_path %></li> 
-    <% end %>
-  <ul>  
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Turnos Bancarios</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <% if current_user %> 
+              <li class="nav-separator"></li>   
+           <% if !current_user.Cliente? %>
+              <li class="nav-item">
+                  <%= link_to "Gestión de Sucursales", bank_branches_path, class: "nav-link active" %>
+              </li>
+              <li class="nav-separator"></li>
+              
+              <li class="nav-item">
+                  <%= link_to "Gestión de Usuarios", users_path, class: "nav-link active" %>
+              </li>
+              <li class="nav-separator"></li>
+           <% end %> 
+           <% if !current_user.Administrador? %>
+              <li class="nav-item">
+                  <%= link_to "Gestión de Turnos", turns_path, class: "nav-link active" %>
+              </li>
+              <li class="nav-separator"></li>
+           <% end %>        
+              <li class="navbar-nav ml-auto">
+                  <p class="navbar-text" style="color: green;">Bienvenido: <%= current_user.username %></p>
+                  <li class="nav-separator"></li>
+                  <%= link_to "Ver Perfil", user_path(current_user.id), class: 'nav-item nav-link active' %>
+                  <li class="nav-separator"></li>
+                  <%= link_to "Editar Perfil", edit_user_path(current_user.id), class: 'nav-item nav-link active' %>
+                  <li class="nav-separator"></li>
+                  <%= button_to 'Cerrar Sesión', session_path(current_user.id),
+                      {:onclick => "return confirm('Confirma el borrado?')", :class => 'nav-item nav-link active',
+                    :method => :delete } %>
+                    <li class="nav-separator"></li>
+      <% else %>
+        <li class="nav-separator"></li>
+        <%= link_to "Iniciar sesión", new_session_path, class: 'nav-item nav-link' %>
+        <li class="nav-separator"></li>
+      <% end %>      
+
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
+
  

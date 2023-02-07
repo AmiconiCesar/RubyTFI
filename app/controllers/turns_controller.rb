@@ -3,7 +3,15 @@ class TurnsController < ApplicationController
 
   # GET /turns or /turns.json
   def index
-    @turns = Turn.order(:date)
+    if Current&.user.Personal?
+        @turns = Turn.where(bank_branch_id: Current.user.bank_branch_id).order(:date)
+    elsif
+      if Current&.user.Cliente?
+        @turns = Turn.where(user_id: Current.user.id).order(:date)
+      end 
+    else 
+        @turns = Turn.order(:date)
+    end   
   end
 
   # GET /turns/1 or /turns/1.json
@@ -65,6 +73,7 @@ class TurnsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def turn_params
-      params.require(:turn).permit(:date, :time, :reason, :state, :comment, :bank_branch_id)
+      params.require(:turn).permit(:date, :time, :reason, :state, :comment, :bank_branch_id, 
+                             :employee_id, :user_id)
     end
 end
