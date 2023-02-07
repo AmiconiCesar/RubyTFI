@@ -1,14 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New user", new_user_path %>
+<div class="container">
+  <h1><strong> Lista de Usuarios</strong></h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Rol</th>
+            </tr>
+      </thead> 
+      <tbody>
+        <%= render @users %>
+      </tbody> 
+    </table>   
+  </div>
+  <%= link_to 'Agregar Usuario', new_user_path, :class => "btn btn-success btn-lg" %>
+  <br>
+  <br>
+  <%= link_to "Volver a la pantalla principal", home_path %>

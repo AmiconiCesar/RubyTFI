@@ -24,11 +24,17 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    if !@user.Personal?
+       @user.bank_branch_id = nil
+    end
 
     respond_to do |format|
       if @user.save
-        session[:user_id] = @user.id
-        format.html { redirect_to home_path, notice: "El usuario se creó correctamente ✅" }
+        if Current.user&.Administrador?  
+          format.html { redirect_to users_path, notice: "El usuario se creó correctamente ✅" }
+        else
+          format.html { redirect_to new_session_path, notice: "El usuario se creó correctamente debe loguearse ✅" }  
+        end
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +47,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+        format.html { redirect_to user_url(@user), notice: "Usuario modificado ✅" }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +61,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, notice: "Usuario eliminado correctamente ✅" }
       format.json { head :no_content }
     end
   end
@@ -68,6 +74,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :role, :password)
+      params.require(:user).permit(:username, :role, :password, :bank_branch_id)
     end
+    
 end

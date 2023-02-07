@@ -1,17 +1,16 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Username:</strong>
-    <%= user.username %>
-  </p>
-
-  <p>
-    <strong>Role:</strong>
-    <%= user.role %>
-  </p>
-
-  <p>
-    <strong>Password digest:</strong>
-    <%= user.password_digest %>
-  </p>
-
+<div class="container">
+   <tr>
+    <td> <%= user.id %></td>
+    <td> <%= user.username %></td>
+    <td> <%= user.role %>
+         <% if user.Personal? %>
+            (<%= user.bank_branch.to_string %>)
+         <% end %> 
+    </td>
+    <td> <%= link_to 'Editar', edit_user_path(user), :class => "btn btn-primary btn-sm" %> </td>
+    <td> <%= button_to "Eliminar", user_path(user), 
+             {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
+              :method => :delete, :disabled => (user.id == current_user.id) }%> </td>
+    <br>
+   </tr> 
 </div>

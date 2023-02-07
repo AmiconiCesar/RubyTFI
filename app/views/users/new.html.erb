@@ -20,7 +20,18 @@
                 <%= form.label :username, style: "display: block" %>
                 <%= form.text_field :username %>
             </div>
+            <% if current_user&.Administrador? %>
+              <div>
+                  <%= form.label :role, style: "display: block"%>
+                  <%= form.select :role, options_for_select(role_users) %>
+              </div>
+              <div>
+                  <%= form.label "Sucursal Bancaria (Solo en caso de ser rol Personal Bancario)", style: "display: block"%>
+                  <%= form.collection_select :bank_branch_id, bank_branches_all, 
+                      :id, :to_string %>
+              </div>    
 
+            <% end %>
             <div>
                 <%= form.label :password, style: "display: block" %>
                 <%= form.password_field :password%>
@@ -37,6 +48,6 @@
 </div>
   <br>
 <div>
-   <%= link_to "Volver al Home" %>
+   <%= link_to "Volver al Home", home_path %>
 </div>
 

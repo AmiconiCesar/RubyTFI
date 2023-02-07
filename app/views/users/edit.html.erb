@@ -1,10 +1,37 @@
-<h1>Editing user</h1>
+<div class="container">
+    <h1><strong> Editar Perfil </strong></h1>
+    <%= form_with model: @user do |form| %>
+         <% if @user.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+               <strong>🚫Atención hay errores:</strong>
+                <ul>
+                 <% @user.errors.each do |error| %>
+                   <li><%= error.full_message %></li>
+                 <% end %>
+                </ul>
+            </div>
+         <% end %>
 
-<%= render "form", user: @user %>
+      <div class="container">
+        <div class="form-group">  
+            <div>
+                <%= form.label :username, style: "display: block" %>
+                <%= form.text_field :username %>
+            </div>
 
-<br>
+            <div>
+                <%= form.label :password, style: "display: block" %>
+                <%= form.password_field :password%>
+            </div>
 
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
+            <div>
+            <br> 
+                <%= form.submit "Registrar", :class => "btn btn-outline-success"  %>
+            </div>
+        </div>
+      </div>           
+    <% end %>     
+    <br>
+    <br>
+    <%= link_to "Volver sin cambiar", home_path %>
 </div>

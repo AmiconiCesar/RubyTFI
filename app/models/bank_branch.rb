@@ -4,7 +4,7 @@ class BankBranch < ApplicationRecord
     belongs_to :locality
     has_many :schedules, dependent: :destroy
     has_many :turns, dependent: :destroy
-    
+        
     def to_string
         "#{name.capitalize} - #{locality.to_string}"
     end

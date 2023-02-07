@@ -3,6 +3,8 @@ class Turn < ApplicationRecord
     validate  :date_and_time, if: -> { date.present? && time.present? }
     attribute :state, :integer, default: 0        
     belongs_to :bank_branch
+    belongs_to :user
+    belongs_to :employee, class_name: "User", optional:true
     
     enum state: [:Pendiente, :Atendido, :NoAtendido]   
    
