@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete(:user_id)
-        p Current.user
         redirect_to new_session_path, notice: "Ha cerrado la sesión correctamente ✅"
     end
 
