@@ -5,8 +5,9 @@
     <td> <%= turn.time.strftime("%H:%M")%></td>
     <td> <%= turn.reason %></td>
     <td style="color: <%= turn.Pendiente? ? 'blue' : 'green' %>">
-        <%= turn.state %></td>  
-    <% if turn.Pendiente? %>
+        <%= turn.state %></td>
+     
+    <% if turn.Pendiente? && current_user.Cliente? %>
         <td> <%= link_to 'Modificar', edit_turn_path(turn), :class => "btn btn-primary btn-sm" %> </td>
         <td> <%= button_to "Cancelar", turn_path(turn), 
                   {:onclick => "return confirm('Confirma la cancelación?')", :class => "btn btn-danger btn-sm",
