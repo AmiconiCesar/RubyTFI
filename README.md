@@ -1,26 +1,15 @@
 # README
-* Proyecto Final Integrador 
+* Proyecto Final Integrador Turnos Bancarios 
 * Amiconi César
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Para el funcionamiento deberá:
+    Clonar el repositorio de github
 
-Things you may want to cover:
+    bundle install  (Para instalar dependencias)
 
-* Ruby version
+Para crear la base de datos y cargale los datos de prueba
+rails db:drop db:create db:migrate db:seed
 
-* System dependencies
+rails s (Para ejecutar)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Observaciones: Envio hasta lo que llegue seguramente faltan detalles a acomodar.
