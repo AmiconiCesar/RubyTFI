@@ -31,4 +31,4 @@ User.create(username: "pedro", password: "pedro", role: 1)
 User.create(username: "maria", password: "maria", role: 1)
 
 
-Turn.create( date: "09-02-2022", time:"08:10", reason:"Apertura de cuenta", state: 0, bank_branch_id: 2, user_id: 5)
+Turn.create( date: "2023-02-14", time:"08:10", reason:"Apertura de cuenta", state: 0, bank_branch_id: 2, user_id: 5)

@@ -16,7 +16,9 @@
       </tbody> 
     </table>   
   </div>
-  <%= link_to 'Agregar Usuario', new_user_path, :class => "btn btn-success btn-lg" %>
+    <% if current_user.Administrador? %>
+     <%= link_to 'Agregar Usuario', new_user_path, :class => "btn btn-success btn-lg" %>
+    <% end %> 
   <br>
   <br>
   <%= link_to "Volver a la pantalla principal", home_path %>

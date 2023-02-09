@@ -5,13 +5,15 @@
     <td> <%= bank_branch.address %></td>
     <td> <%= bank_branch.locality.name %></td>
     <td> <%= bank_branch.locality.province %></td>
-    <td> <%= link_to 'Editar', edit_bank_branch_path(bank_branch), :class => "btn btn-primary btn-sm" %> </td>
-    <td> <%= button_to "Eliminar", bank_branch_path(bank_branch), 
+       <% if current_user.Administrador? %>  
+         <td> <%= link_to 'Editar', edit_bank_branch_path(bank_branch), :class => "btn btn-primary btn-sm" %> </td>
+         <td> <%= button_to "Eliminar", bank_branch_path(bank_branch), 
              {:onclick => "return confirm('Confirma el borrado?')", :class => "btn btn-danger btn-sm",
               :method => :delete, :disabled => (bank_branch.has_pending_turns?) }%> </td>
-    <td> <%= link_to bank_branch_schedules_path(bank_branch, @schedules), class: "btn btn-icon" do %>
-           <i class="fa fa-calendar" aria-hidden="true"></i>
-         <% end %> </td>          
+         <td> <%= link_to bank_branch_schedules_path(bank_branch, @schedules), class: "btn btn-icon" do %>
+                 <i class="fa fa-calendar" aria-hidden="true"></i>
+              <% end %> </td>  
+       <% end %>               
     <td> <%= link_to bank_branch_path(bank_branch), class: "btn btn-icon" do %>
            <i class="fa fa-eye" aria-hidden="true"></i>
          <% end %> </td>
