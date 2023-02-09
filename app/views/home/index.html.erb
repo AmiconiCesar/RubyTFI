@@ -35,7 +35,7 @@
                   <%= link_to "Editar Perfil", edit_user_path(current_user.id), class: 'nav-item nav-link active' %>
                   <li class="nav-separator"></li>
                   <%= button_to 'Cerrar Sesión', session_path(current_user.id),
-                      {:onclick => "return confirm('Confirma el borrado?')", :class => 'nav-item nav-link active',
+                      {:onclick => "return confirm('Confirma cierre de sesión?')", :class => 'nav-item nav-link active',
                     :method => :delete } %>
                     <li class="nav-separator"></li>
       <% else %>

@@ -5,7 +5,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+     if Current.user.Personal?
+        @users = User.where(role: "Cliente").order(:username)
+     else
+        @users = User.order(:role, :username)
+     end 
   end
 
   # GET /users/1 or /users/1.json

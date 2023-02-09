@@ -16,7 +16,9 @@
       </tbody> 
     </table>   
   </div>
-  <%= link_to 'Nuevo Turno', new_turn_path, :class => "btn btn-success btn-lg" %>
+   <% if current_user.Cliente? %> 
+    <%= link_to 'Nuevo Turno', new_turn_path, :class => "btn btn-success btn-lg" %>
+   <% end %>
 </div>
  <br>
   <br>

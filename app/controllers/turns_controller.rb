@@ -30,6 +30,7 @@ class TurnsController < ApplicationController
   # POST /turns or /turns.json
   def create
     @turn = Turn.new(turn_params)
+    @turn.user_id = Current.user.id
 
     respond_to do |format|
       if @turn.save
