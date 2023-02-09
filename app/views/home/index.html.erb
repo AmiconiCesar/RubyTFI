@@ -15,7 +15,12 @@
                   <%= link_to "Gestión de Sucursales", bank_branches_path, class: "nav-link active" %>
               </li>
               <li class="nav-separator"></li>
-              
+           <% if current_user.Administrador? %>  
+              <li class="nav-item">
+                  <%= link_to "Gestión de Localidades", localities_path, class: "nav-link active" %>
+              </li>
+              <li class="nav-separator"></li> 
+           <% end %>  
               <li class="nav-item">
                   <%= link_to "Gestión de Usuarios", users_path, class: "nav-link active" %>
               </li>
