@@ -3,7 +3,11 @@
   <p style="color: green"><%= notice %></p>
   <strong> Fecha: </strong> <%= I18n.l(@turn.date, format: "%A, %d-%m-%y") %><br>
   <strong> Horario: </strong> <%= @turn.time.strftime("%H:%M") %><br>
-  <strong> Motivo: </strong> <%= @turn.reason %>
+  <strong> Motivo: </strong> <%= @turn.reason %><br>
+  <% if @turn.Atendido? %>  
+    <strong> Atendido por: </strong> <%= @turn.employee.username %><br>
+    <strong> Motivo: </strong> <%= @turn.comment %><br>
+  <% end %>
   <br>
   <br>
   <%= link_to "Volver a mis turnos", turns_path %>

@@ -1,0 +1,8 @@
+<div class="container">
+  <h3><strong> Atendiendo Turno Personal Bancario: <%= current_user.username %> </strong></h3>
+  <%= render "form_attend", turn: @turn %>
+  <br>
+  <div>
+    <%= link_to "Volver a mis turnos", turns_path %>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 class Turn < ApplicationRecord
     validates :date, :time, :reason, :state, presence: { message: "No puede ser nulo"}
     validate  :date_and_time, if: -> { date.present? && time.present? }
+    validates :comment, presence: true, if: -> { employee.present? }
     attribute :state, :integer, default: 0        
     belongs_to :bank_branch
     belongs_to :user

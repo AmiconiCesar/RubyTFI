@@ -1,6 +1,7 @@
 <div class="container">
    <tr>
     <td> <%= turn.bank_branch.to_string %></td>
+    <td> <%= turn.user.username %></td>
     <td> <%= I18n.l(turn.date, format: "%A, %d-%m-%y") %></td>
     <td> <%= turn.time.strftime("%H:%M")%></td>
     <td> <%= turn.reason %></td>
@@ -12,7 +13,10 @@
         <td> <%= button_to "Cancelar", turn_path(turn), 
                   {:onclick => "return confirm('Confirma la cancelación?')", :class => "btn btn-danger btn-sm",
                   :method => :delete, :disabled => (turn.date > Date.today ? false : true) }%> </td>
-    <% end %>   
+    <% end %>
+    <% if turn.Pendiente? && current_user.Personal? && turn.date <= Date.today %>
+        <td> <%= link_to 'Atender', attend_turn_path(turn), :class => "btn btn-success btn-sm" %> </td>
+    <% end %>
     <% if !turn.Pendiente? %>
       <td> <%= link_to turn_path(turn), class: "btn btn-icon" do %>
             <i class="fa fa-eye" aria-hidden="true"></i>

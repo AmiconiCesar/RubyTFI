@@ -1,5 +1,5 @@
 class TurnsController < ApplicationController
-  before_action :set_turn, only: %i[ show edit update destroy ]
+  before_action :set_turn, only: %i[ show edit attend update destroy ]
 
   # GET /turns or /turns.json
   def index
@@ -27,6 +27,11 @@ class TurnsController < ApplicationController
   def edit
   end
 
+  # GET /turns/1/attend
+  def attend
+  end
+
+
   # POST /turns or /turns.json
   def create
     @turn = Turn.new(turn_params)
@@ -34,7 +39,7 @@ class TurnsController < ApplicationController
 
     respond_to do |format|
       if @turn.save
-        format.html { redirect_to turn_url(@turn), notice: "Turn was successfully created." }
+        format.html { redirect_to turn_url(@turn), notice: "El turno se creó correctamente ✅" }
         format.json { render :show, status: :created, location: @turn }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,17 +50,25 @@ class TurnsController < ApplicationController
 
   # PATCH/PUT /turns/1 or /turns/1.json
   def update
-    respond_to do |format|
+      if Current.user.Personal?
+         @turn.employee_id = Current.user.id
+         @turn.state = :Atendido
+      end  
       if @turn.update(turn_params)
-        format.html { redirect_to turn_url(@turn), notice: "Turn was successfully updated." }
-        format.json { render :show, status: :ok, location: @turn }
+          if Current.user.Personal?
+             redirect_to turn_url(@turn), notice: "Turno atendido correctamente ✅"    
+          else
+             redirect_to turn_url(@turn), notice: "Turno actualizado correctamente ✅"
+          end
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @turn.errors, status: :unprocessable_entity }
+          if Current.user.Personal?
+            render :attend, status: :unprocessable_entity
+          else
+            render :edit, status: :unprocessable_entity
+          end  
       end
-    end
   end
-
+  
   # DELETE /turns/1 or /turns/1.json
   def destroy
     @turn.destroy
